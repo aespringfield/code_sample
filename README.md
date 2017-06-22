@@ -1,0 +1,7 @@
+Sample Node.js module for finding available appointment times, which was previously part of a larger appointment management application for a nonprofit furniture bank. This module contains logic and PostgreSQL queries that are wrapped into a single function, getAvailableAppointments, which in the full application is accessed by GET route and sent to the client for display on a calendar view.
+
+The module takes in parameters such as date range, appointment type, location, etc. to return an array of available appointment objects. It uses the parameters to query the database for matching appointment slots (which are categories of appointments on a weekly schedule, not tied to a specific date, that each allow a certain number of appointments to be scheduled in that slot on a given date). These appointment slots are then compared to data from other tables, including a table of appointments that have already been scheduled and a table of schedule overrides, in order to produce a list of valid, available appointments. These appointments that can be displayed on the client side for the user to peruse and select.
+
+The module uses Bluebird.js for promises, pg for interfacing PostgreSQL, and Moment.js for some date/time formatting functionality.
+
+The larger project from which this file was pulled can be found here: https://github.com/BridgingMN/bridging-connect. Note that the master branch for that project may not yet contain all of the changes contained in this file.
